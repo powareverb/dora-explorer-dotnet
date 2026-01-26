@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  
+
   <!-- https://learn.microsoft.com/de-de/dotnet/core/tools/global-tools-how-to-create -->
 
   <!-- dotnet tool list -g -->
@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="Refit" Version="7.2.22" />
   </ItemGroup>
 
-  <!-- 
+  <!--
     Since during pack all ProjectReference will be transformed to Package dependencies. And version number is cascading into all package.
   -->
 
