@@ -12,6 +12,20 @@ Your task is to ensure .NET/C# code in ${selection} meets the best practices spe
 - Include parameter descriptions and return value descriptions in XML comments
 - Follow the established namespace structure: {Core|Console|App|Service}.{Feature}
 
+## General Structure
+
+- Ensure classes are organized logically within files and folders, each file contains a single class where possible
+- Use file-scoped namespaces and single-line using directives
+- Insert a newline before opening curly braces of code blocks
+
+## General Practices
+
+- Use consistent naming conventions (PascalCase for types and members, camelCase for local variables)
+- Organize code into logical sections with clear separation of concerns
+- Keep classes and methods focused on a single responsibility
+- Use meaningful names that reflect domain concepts
+- Implement proper disposal patterns for resources
+
 ## Design Patterns & Architecture
 
 - Use primary constructor syntax for dependency injection (e.g., `public class MyClass(IDependency dependency)`)

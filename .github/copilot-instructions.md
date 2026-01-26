@@ -43,12 +43,30 @@ dotnet tool uninstall dora-explorer-dotnet --global
 - **Testing**: MSTest framework with TestInitialize/TestMethod attributes. Don't use Arrange/Act/Assert comments. Mock console I/O with `Console.SetOut/SetIn` for functional tests
 - **Formatting**: Follow `.editorconfig` rules; insert newline before opening braces
 
-## Key Project Files
-- [Directory.build.props](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/Directory.build.props) - Empty; versioning in PackageMetadata.props
-- [PackageMetadata.props](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/Package/Config/PackageMetadata.props) - Version control and NuGet metadata (VersionMajor/Minor/Build/Revision)
-- [PackageFileMappings.props](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/Package/Config/PackageFileMappings.props) - File inclusion rules for package
-- [Program.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/Program.cs) - CLI entry point
-- [FunctionalTests.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool.MSTest/FunctionalTests.cs) - Console I/O tests
+## Code Architecture
+The tool is organized using clear separation of concerns:
+- [Program.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/Program.cs) - CLI entry point and command routing
+- [ArgumentParser.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/ArgumentParser.cs) - Command-line argument parsing
+- [PullIssuesOptions.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/PullIssuesOptions.cs) - Options model (data transfer object)
+- [PullIssuesCommandHandler.cs](src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/PullIssuesCommandHandler.cs) - Business logic for pull-issues command
+- Core library provides: data models, API client interface, cache layer, HTTP handlers
+
+## Design Patterns
+- **Command Pattern**: Each CLI command has a dedicated handler (e.g., `PullIssuesCommandHandler`)
+- **Dependency Injection**: Use constructor injection for dependencies
+- **Data Transfer Objects**: `PullIssuesOptions` carries command arguments without logic
+- **Factory Pattern**: `ArgumentParser` creates properly configured options
+- **Separation of Concerns**: Parser → Handler → Business Logic
+
+## Testing Pattern Example
+Unit tests for cache functionality:
+```csharp
+var cache = new IssueCache(_testCacheDir);
+await cache.SaveAsync("PROJECT", testIssues);
+var loaded = await cache.TryLoadAsync("PROJECT", TimeSpan.FromHours(1));
+Assert.IsNotNull(loaded);
+Assert.AreEqual(expectedCount, loaded.Count);
+```
 
 ## Testing Pattern Example
 Functional tests capture console I/O redirection:
