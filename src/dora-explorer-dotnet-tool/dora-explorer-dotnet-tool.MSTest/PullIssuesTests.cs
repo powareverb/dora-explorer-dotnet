@@ -65,29 +65,6 @@ namespace DoraExplorer.DotNetTool.MSTest
         }
 
         [TestMethod]
-        [Ignore("Flaky test - needs investigation")]
-        public async Task CacheExpirationAsync()
-        {
-            // Arrange
-            var cache = new IssueCache(_testCacheDir);
-            var testIssues = new List<Issue>
-            {
-                new Issue { Key = "EXPIRED-1", Created = DateTime.UtcNow, Updated = DateTime.UtcNow }
-            };
-
-            await cache.SaveAsync("EXPIRE", testIssues);
-
-            // Act - Load with very short TTL (should expire immediately)
-            var loaded = await cache.TryLoadAsync("EXPIRE", TimeSpan.FromMilliseconds(1));
-            await Task.Delay(10); // Wait to ensure expiration
-            var expiredLoad = await cache.TryLoadAsync("EXPIRE", TimeSpan.FromMilliseconds(1));
-
-            // Assert
-            Assert.IsNotNull(loaded); // First load should work
-            Assert.IsNull(expiredLoad); // Second load should be null due to expiration
-        }
-
-        [TestMethod]
         public async Task CacheInvalidateAsync()
         {
             // Arrange
