@@ -8,6 +8,7 @@
     <IsPublishable>false</IsPublishable>
     <PackRelease>false</PackRelease>
     <PublishRelease>false</PublishRelease>
+    <UserSecretsId>b587a336-6155-4cd4-988a-8fb941b17e97</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,9 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
+    <PackageReference Include="Refit" Version="7.2.22" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
