@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  
+  <!-- https://learn.microsoft.com/de-de/dotnet/core/tools/global-tools-how-to-create -->
+
+  <!-- dotnet tool list -g -->
+  <!-- dotnet tool install PackageName -global -prerelease //Use double minus not allowed in xml comments -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);net9.0</TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);net10.0</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>DoraExplorer.DotNetTool</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\dora-explorer-core\dora-explorer-core.csproj" />
+  </ItemGroup>
+
+  <!-- 
+    Since during pack all ProjectReference will be transformed to Package dependencies. And version number is cascading into all package.
+  -->
+
+  <!-- Package configuration -->
+  <Import Project="Package/Config/PackageMetadata.props" />
+  <Import Project="Package/Config/PackageFileMappings.props" />
+  <Import Project="Package/Config/PackageSpecs.props" />
+
+  <!-- Exclude .gitignore from solution explorer -->
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
+
+</Project>
