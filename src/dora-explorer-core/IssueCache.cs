@@ -27,6 +27,7 @@ public class IssueCache
         };
 
         Directory.CreateDirectory(_cacheDirectory);
+        Console.WriteLine($"Issue cache directory: {_cacheDirectory}");
     }
 
     /// <summary>

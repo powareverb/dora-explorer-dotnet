@@ -15,7 +15,8 @@ public interface IJiraApiClient
     /// <param name="startAt">Starting index for pagination (default: 0)</param>
     /// <param name="ct">Cancellation token</param>
     /// <returns>Search response containing issues and pagination info</returns>
-    [Get("/rest/api/3/search?jql={jql}&fields={fields}&maxResults={maxResults}&startAt={startAt}")]
+    /// https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get
+    [Get("/rest/api/3/search/jql?jql={jql}&fields={fields}&maxResults={maxResults}&startAt={startAt}")]
     Task<JiraSearchResponse> SearchIssuesAsync(
         string jql,
         string fields = "*all",

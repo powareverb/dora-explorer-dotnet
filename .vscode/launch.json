@@ -8,6 +8,7 @@
       "name": "Launch Dora Explorer DotNet Tool",
       "type": "coreclr",
       "request": "launch",
+      "preLaunchTask": "dotnet: build",
       "program": "${workspaceFolder}/src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/bin/Debug/net9.0/dora-explorer-dotnet-tool.dll",
       "args": [
         "pull-issues",
@@ -15,10 +16,17 @@
         //"https://your-jira-instance.atlassian.net",
         //"--project-keys",
         //"DEMO"
+        // "--start-date",
+        // "2025-01-01",
+        // "--end-date",
+        // "2026-12-31"
       ],
       "cwd": "${workspaceFolder}/src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool",
       "stopAtEntry": false,
-      "console": "internalConsole"
+      "console": "internalConsole",
+      "env": {
+        "Test": "value"
+      }
     }
   ]
 }
