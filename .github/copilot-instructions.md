@@ -11,6 +11,10 @@ The project is organized as a **multi-project solution** under `src/`:
 
 Key design: ProjectReferences in tool project are auto-transformed to PackageReferences during pack, requiring centralized version management via `PackageMetadata.props`.
 
+## Planning
+- Features are specified in `docs/features/` with detailed requirements. Follow these specs closely when implementing features.
+- Follow general guidelines for documenting and implementing features in `docs/features/0-README.md`.
+
 ## Build and Pack Workflow
 ```sh
 # Navigate to tool directory
@@ -57,4 +61,6 @@ Assert.AreEqual(output, expectedOutput);
 ```
 
 ## External Guidelines
+- Refer to [General Development Guidelines](.github/instructions/general.instructions.md) for cross-language best practices on code quality, documentation, and testing.
 - Refer to [C# Development Guidelines](.github/instructions/csharp.instructions.md) for comprehensive standards on logging, data access, validation, and deployment patterns
+- Refer to [Markdown Documentation Guidelines](.github/instructions/markdown.instructions.md) for writing and formatting project documentation.

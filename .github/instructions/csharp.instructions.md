@@ -39,6 +39,12 @@ applyTo: '**/*.cs'
 - Show proper separation of concerns with models, services, and data access layers.
 - Explain the Program.cs and configuration system in ASP.NET Core 10 including environment-specific settings.
 
+## Secrets Management
+
+- Guide users through securely managing secrets using User Secrets for local development.
+- Explain how to configure secrets in production environments using environment variables or Azure Key Vault.
+- Demonstrate best practices for avoiding hard-coded secrets in source code.
+
 ## Nullable Reference Types
 
 - Declare variables non-nullable, and check for `null` at entry points.
@@ -79,7 +85,7 @@ applyTo: '**/*.cs'
 
 ## Logging and Monitoring
 
-- Guide the implementation of structured logging using Serilog or other providers.
+- Guide the implementation of structured logging using OpenTelemetry or other providers.
 - Explain the logging levels and when to use each.
 - Demonstrate integration with Application Insights for telemetry collection.
 - Show how to implement custom telemetry and correlation IDs for request tracking.
