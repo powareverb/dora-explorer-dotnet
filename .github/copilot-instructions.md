@@ -60,6 +60,12 @@ Program.Main(Array.Empty<string>());
 Assert.AreEqual(output, expectedOutput);
 ```
 
+## Running Scripts
+
+- Use PowerShell by default to run scripts or commands on the command line.
+- Some scripts may have Bash versions for cross-platform compatibility; prefer PowerShell unless specified.
+- Use scripts in the `scripts/` directory for common tasks like building, testing, and packaging.  Add scripts here as needed for repetitive tasks.
+
 ## External Guidelines
 - Refer to [General Development Guidelines](.github/instructions/general.instructions.md) for cross-language best practices on code quality, documentation, and testing.
 - Refer to [C# Development Guidelines](.github/instructions/csharp.instructions.md) for comprehensive standards on logging, data access, validation, and deployment patterns
