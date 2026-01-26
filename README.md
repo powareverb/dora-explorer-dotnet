@@ -25,7 +25,13 @@ dora-explorer-dotnet pull-issues \
   --cache-ttl-hours 2
 ```
 
+All of the parameters are also available using either environmental variables, or in a default configuration file.
+
 ## Technical Features
 
 - Use Refit and direct queries rather than Jira libraries to minimise dependencies.
 - Cache issue metadata locally (using etags) to minimise continued queries to Jira.
+
+## Co-authored using Copilot
+
+This tool is also a test of co-authoring a tool using the AI tool Copilot.

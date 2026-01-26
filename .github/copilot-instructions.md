@@ -82,7 +82,7 @@ Assert.AreEqual(output, expectedOutput);
 ## Running Scripts and Commands
 
 - **PowerShell First**: Use PowerShell (pwsh) by default for all command-line tasks, terminal operations, and scripts. PowerShell is available natively on Windows and cross-platform.
-- **No Linux Tool Assumptions**: Do not assume Linux/Unix tools (sed, awk, grep, curl, tail, etc.) are available. Use PowerShell cmdlets and .NET utilities instead. Example: Use `Get-ChildItem` instead of `ls`, `Select-String` instead of `grep`, `Invoke-WebRequest` instead of `curl`.
+- **No Linux Tool Assumptions**: Do not assume Linux/Unix tools (sed, awk, grep, curl, head, tail, etc.) are available. Use PowerShell cmdlets and .NET utilities instead. Example: Use `Get-ChildItem` instead of `ls`, `Select-String` instead of `grep`, `Invoke-WebRequest` instead of `curl`.
 - **Cross-Platform Scripts**: When writing scripts that must run on both Windows and Linux, test PowerShell Core equivalents and document platform-specific behavior.
 - **Script Organization**: Store reusable scripts in the `scripts/` directory. Add PowerShell scripts (.ps1) for common tasks like building, testing, and packaging.
 

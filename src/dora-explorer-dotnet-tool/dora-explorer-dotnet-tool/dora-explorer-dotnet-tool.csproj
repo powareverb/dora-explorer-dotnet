@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 
   <!-- https://learn.microsoft.com/de-de/dotnet/core/tools/global-tools-how-to-create -->
@@ -14,6 +14,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <RootNamespace>DoraExplorer.DotNetTool</RootNamespace>
+    <UserSecretsId>b587a336-6155-4cd4-988a-8fb941b17e97</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,11 @@
 
   <ItemGroup>
     <PackageReference Include="Refit" Version="7.2.22" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
   </ItemGroup>
 
   <!--
@@ -36,6 +42,13 @@
   <!-- Exclude .gitignore from solution explorer -->
   <ItemGroup>
     <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <!-- Include configuration files -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

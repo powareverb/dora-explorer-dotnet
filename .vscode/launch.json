@@ -1,0 +1,24 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Dora Explorer DotNet Tool",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool/bin/Debug/net9.0/dora-explorer-dotnet-tool.dll",
+      "args": [
+        "pull-issues",
+        //"--jira-url",
+        //"https://your-jira-instance.atlassian.net",
+        //"--project-keys",
+        //"DEMO"
+      ],
+      "cwd": "${workspaceFolder}/src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

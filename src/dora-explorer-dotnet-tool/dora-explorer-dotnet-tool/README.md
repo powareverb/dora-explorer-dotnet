@@ -3,6 +3,11 @@
 ## Local Testing
 
 All instructions below assume using the current directory (src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool).
+
+```sh
+cd src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool
+```
+
 To test locally:
 
 ### Install package
@@ -32,5 +37,12 @@ dora-explorer-dotnet
 ```sh
 # Install package
 dotnet tool list -g
-dotnet tool uninstall dora-explorer-dotnet --global --prerelease
+dotnet tool uninstall dora-explorer-dotnet --global
+```
+
+### Test locally
+
+```sh
+# Test locally
+./dora-explorer-dotnet-tool/bin/Debug/net10.0/dora-explorer-dotnet-tool.exe pull-issues
 ```

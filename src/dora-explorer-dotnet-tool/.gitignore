@@ -1,0 +1,2 @@
+# Ignore application configuration files specific to environments
+**/appsettings.*.json
