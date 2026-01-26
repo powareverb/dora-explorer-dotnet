@@ -1,5 +1,3 @@
-using Refit;
-
 namespace DoraExplorer.Core;
 
 /// <summary>
