@@ -12,6 +12,19 @@ It makes use of labels, releases and relationships between issues to generate va
   b. Output to MD
   c. Output to Confluence pages based on templates
 
+## Usage
+
+```sh
+dora-explorer-dotnet pull-issues \
+  --jira-url https://your-instance.atlassian.net \
+  --jira-email user@example.com \
+  --jira-api-key <api-key> \
+  --project-keys PROJ1,PROJ2 \
+  --start-date 2025-01-01 \
+  --end-date 2026-01-31 \
+  --cache-ttl-hours 2
+```
+
 ## Technical Features
 
 - Use Refit and direct queries rather than Jira libraries to minimise dependencies.
