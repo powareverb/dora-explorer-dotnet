@@ -20,6 +20,10 @@
     <ProjectReference Include="..\..\dora-explorer-core\dora-explorer-core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Refit" Version="7.0.0" />
+  </ItemGroup>
+
   <!-- 
     Since during pack all ProjectReference will be transformed to Package dependencies. And version number is cascading into all package.
   -->

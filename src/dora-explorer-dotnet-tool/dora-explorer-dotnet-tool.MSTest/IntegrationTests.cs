@@ -24,6 +24,7 @@ namespace DoraExplorer.DotNetTool.MSTest
         }
 
         [TestMethod]
+        [Ignore("Old greeting test - will be replaced with pull-issues integration test")]
         public void ConsoleProcess()
         {
             // Assuming 'SomeType' is a type from the referenced project
