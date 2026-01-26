@@ -31,19 +31,19 @@ public class Issue
     public Status? Status { get; set; }
 
     /// <summary>
-    /// DateTime when issue was created (UTC)
+    /// DateTime when issue was created
     /// </summary>
-    public DateTime Created { get; set; }
+    public DateTimeOffset? Created { get; set; }
 
     /// <summary>
-    /// DateTime when issue was last modified (UTC)
+    /// DateTime when issue was last modified
     /// </summary>
-    public DateTime Updated { get; set; }
+    public DateTimeOffset? Updated { get; set; }
 
     /// <summary>
-    /// DateTime when issue was resolved/closed (UTC), nullable if not resolved
+    /// DateTime when issue was resolved/closed, nullable if not resolved
     /// </summary>
-    public DateTime? Resolved { get; set; }
+    public DateTimeOffset? Resolved { get; set; }
 
     /// <summary>
     /// Resolution (Fixed, Won't Fix, Duplicate, etc.), nullable if not resolved

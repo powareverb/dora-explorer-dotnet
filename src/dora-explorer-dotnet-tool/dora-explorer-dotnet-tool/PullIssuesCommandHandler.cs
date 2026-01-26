@@ -1,4 +1,7 @@
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace DoraExplorer.DotNetTool;
 
 /// <summary>
@@ -29,7 +32,18 @@ public class PullIssuesCommandHandler
         try
         {
             using var httpClient = CreateHttpClient();
-            var jiraClient = RestService.For<IJiraApiClient>(httpClient);
+            var jiraClient = RestService.For<IJiraApiClient>(httpClient, new RefitSettings
+            {
+                ContentSerializer = new SystemTextJsonContentSerializer(new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    Converters =
+                    {
+                        new DateTimeConverterUsingDateTimeParse(),
+                        new DateTimeOffsetConverterUsingDateTimeParse()
+                    }
+                })
+            });
             var cache = new IssueCache();
 
             var cacheTtl = TimeSpan.FromHours(_options.CacheTtlHours);
@@ -128,8 +142,8 @@ public class PullIssuesCommandHandler
                     Console.WriteLine($"  Retry {retryCount}: waiting {timespan.TotalSeconds}s before retry...");
                 });
 
-        return await retryPolicy.ExecuteAsync(
-            () => jiraClient.SearchIssuesAsync(jql, "*all", PageSize, startAt));
+        return (await retryPolicy.ExecuteAsync(
+            () => jiraClient.SearchIssuesAsync(jql, "*all", PageSize, startAt)));
     }
 
     private string BuildJql(string projectKey)

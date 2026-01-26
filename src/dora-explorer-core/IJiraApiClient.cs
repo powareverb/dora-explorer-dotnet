@@ -25,6 +25,24 @@ public interface IJiraApiClient
         CancellationToken ct = default);
 
     /// <summary>
+    /// Search for issues using JQL with pagination
+    /// </summary>
+    /// <param name="jql">JQL query string (e.g., "project = PROJ AND created >= -30d")</param>
+    /// <param name="fields">Comma-separated field names to retrieve. Use "*all" for all fields</param>
+    /// <param name="maxResults">Maximum results per request (default: 50, max: 100)</param>
+    /// <param name="startAt">Starting index for pagination (default: 0)</param>
+    /// <param name="ct">Cancellation token</param>
+    /// <returns>Search response containing issues and pagination info</returns>
+    /// https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get
+    [Get("/rest/api/3/search/jql?jql={jql}&fields={fields}&maxResults={maxResults}&startAt={startAt}")]
+    Task<ApiResponse<JiraSearchResponse>> SearchIssuesWithDiagnosisAsync(
+        string jql,
+        string fields = "*all",
+        int maxResults = 50,
+        int startAt = 0,
+        CancellationToken ct = default);
+
+    /// <summary>
     /// Get list of all projects accessible to the current user
     /// </summary>
     /// <param name="ct">Cancellation token</param>
@@ -108,17 +126,17 @@ public class IssueFields
     /// <summary>
     /// Created timestamp (ISO 8601)
     /// </summary>
-    public DateTime Created { get; set; }
+    public DateTimeOffset? Created { get; set; }
 
     /// <summary>
     /// Updated timestamp (ISO 8601)
     /// </summary>
-    public DateTime Updated { get; set; }
+    public DateTimeOffset? Updated { get; set; }
 
     /// <summary>
     /// Resolved timestamp (ISO 8601), nullable
     /// </summary>
-    public DateTime? Resolvable { get; set; }
+    public DateTimeOffset? Resolvable { get; set; }
 
     /// <summary>
     /// Resolution
