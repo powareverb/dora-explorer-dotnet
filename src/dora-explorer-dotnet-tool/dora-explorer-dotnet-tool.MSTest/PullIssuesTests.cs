@@ -1,35 +1,23 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DoraExplorer.Core;
-using System.Text.Json;
-
 namespace DoraExplorer.DotNetTool.MSTest
 {
     [TestClass]
     public class PullIssuesTests
     {
-        private string? _testCacheDir;
+        private MockFileSystem? _fileSystem;
+        private string _cacheDir = "/cache";
 
         [TestInitialize]
         public void Setup()
         {
-            _testCacheDir = Path.Combine(Path.GetTempPath(), $"dora-test-cache-{Guid.NewGuid()}");
-            Directory.CreateDirectory(_testCacheDir);
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            if (_testCacheDir != null && Directory.Exists(_testCacheDir))
-            {
-                Directory.Delete(_testCacheDir, recursive: true);
-            }
+            _fileSystem = new MockFileSystem();
+            _fileSystem.AddDirectory(_cacheDir);
         }
 
         [TestMethod]
         public async Task CacheSaveAndLoadAsync()
         {
             // Arrange
-            var cache = new IssueCache(_testCacheDir);
+            var cache = new IssueCache(_cacheDir, _fileSystem);
             var testIssues = new List<Issue>
             {
                 new Issue
@@ -68,7 +56,7 @@ namespace DoraExplorer.DotNetTool.MSTest
         public async Task CacheInvalidateAsync()
         {
             // Arrange
-            var cache = new IssueCache(_testCacheDir);
+            var cache = new IssueCache(_cacheDir, _fileSystem);
             var testIssues = new List<Issue>
             {
                 new Issue { Key = "INVALID-1", Created = DateTime.UtcNow, Updated = DateTime.UtcNow }

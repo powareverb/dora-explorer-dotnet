@@ -1,5 +1,7 @@
 namespace DoraExplorer.Core;
 
+using System.IO.Abstractions;
+
 /// <summary>
 /// Manages local filesystem caching of Jira issues with TTL-based expiration
 /// </summary>
@@ -7,13 +9,17 @@ public class IssueCache
 {
     private readonly string _cacheDirectory;
     private readonly JsonSerializerOptions _jsonOptions;
+    private readonly IFileSystem _fileSystem;
 
     /// <summary>
     /// Creates a new instance of IssueCache
     /// </summary>
     /// <param name="cacheDirectory">Root directory for cache storage. If null, uses ~/.dora-explorer/cache/</param>
-    public IssueCache(string? cacheDirectory = null)
+    /// <param name="fileSystem">File system abstraction for dependency injection. If null, uses real filesystem</param>
+    public IssueCache(string? cacheDirectory = null, IFileSystem? fileSystem = null)
     {
+        _fileSystem = fileSystem ?? new FileSystem();
+
         _cacheDirectory = cacheDirectory ?? Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".dora-explorer",
@@ -26,7 +32,7 @@ public class IssueCache
             WriteIndented = true
         };
 
-        Directory.CreateDirectory(_cacheDirectory);
+        _fileSystem.Directory.CreateDirectory(_cacheDirectory);
         Console.WriteLine($"Issue cache directory: {_cacheDirectory}");
     }
 
@@ -54,7 +60,7 @@ public class IssueCache
         var fileName = GetCacheFileName(projectKey);
         var json = JsonSerializer.Serialize(cacheEntry, _jsonOptions);
 
-        await File.WriteAllTextAsync(fileName, json, ct);
+        await _fileSystem.File.WriteAllTextAsync(fileName, json, ct);
     }
 
     /// <summary>
@@ -75,12 +81,12 @@ public class IssueCache
         cacheTtl ??= TimeSpan.FromHours(1); // Default 1 hour TTL
         var fileName = GetCacheFileName(projectKey);
 
-        if (!File.Exists(fileName))
+        if (!_fileSystem.File.Exists(fileName))
             return null;
 
         try
         {
-            var json = await File.ReadAllTextAsync(fileName, ct);
+            var json = await _fileSystem.File.ReadAllTextAsync(fileName, ct);
             var cacheEntry = JsonSerializer.Deserialize<CacheEntry>(json, _jsonOptions);
 
             if (cacheEntry is null)
@@ -110,8 +116,8 @@ public class IssueCache
             return;
 
         var fileName = GetCacheFileName(projectKey);
-        if (File.Exists(fileName))
-            File.Delete(fileName);
+        if (_fileSystem.File.Exists(fileName))
+            _fileSystem.File.Delete(fileName);
     }
 
     private string GetCacheFileName(string projectKey)
