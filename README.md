@@ -5,12 +5,12 @@ It makes use of labels, releases and relationships between issues to generate va
 
 ## Features
 
-- Pull issues and release information from Jira, using an API key.  Cache issue metadata locally (using etags) to minimise continued queries to Jira.
-- Generate DORA metrics from issue information and timing
-- Output DORA metrics to various places
-  - Output to CSV
-  - Output to MD
-  - Output to Confluence pages based on templates
+1. Pull issues and release information from Jira, using an API key.  Cache issue metadata locally (using etags) to minimise continued queries to Jira.
+2. Generate DORA metrics from issue information and timing
+3. Output DORA metrics to various places
+  a. Output to CSV
+  b. Output to MD
+  c. Output to Confluence pages based on templates
 
 ## Technical Features
 
