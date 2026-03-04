@@ -1,0 +1,5 @@
+#!/usr/bin/env pwsh
+#MISE description="Hello, World in PowerShell"
+
+$current_directory = Get-Location
+Write-Host "Hello from PowerShell, current directory is $current_directory"
