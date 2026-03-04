@@ -1,0 +1,21 @@
+{
+  "name": "dora-explorer DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
+  },
+  "postCreateCommand": ".devcontainer/setup.sh",
+  "postAttachCommand": ".devcontainer/attach.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hverlin.mise-vscode",
+        "ms-dotnettools.csdevkit",
+        "tombi-toml.tombi"
+      ]
+    }
+  },
+  "mounts": [],
+  "containerEnv": {},
+  "remoteEnv": {}
+}

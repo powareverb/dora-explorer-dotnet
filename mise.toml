@@ -1,0 +1,4 @@
+[tools]
+# dotnet = "9.0.311"
+dotnet = "10.0.103"
+powershell-core = "7.5.4"
