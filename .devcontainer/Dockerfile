@@ -5,5 +5,7 @@ COPY --from=jdxcode/mise /usr/local/bin/mise /usr/local/bin/
 RUN echo 'eval "$(mise activate bash)"' >> /home/vscode/.bashrc \
     && echo 'eval "$(mise activate zsh)"'  >> /home/vscode/.zshrc
 COPY .devcontainer/setup.sh /tmp/setup.sh
-RUN chmod +x /tmp/setup.sh && /tmp/setup.sh
+RUN chmod +x /tmp/setup.sh
+# Needs to be run as vscode to ensure that the installed tools are available in the user's environment.
 USER vscode
+RUN /tmp/setup.sh
