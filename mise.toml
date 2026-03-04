@@ -2,3 +2,15 @@
 # dotnet = "9.0.311"
 dotnet = "10.0.103"
 powershell-core = "7.5.4"
+
+[tasks.purge]
+description = "Remove bin and obj folders"
+run = "dotnet clean src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool.sln -c Debug && dotnet clean src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool.sln -c Release && find . -type d -name 'bin' -o -name 'obj' | xargs rm -rf"
+
+[tasks.build]
+description = "Build the dotnet tool (debug)"
+run = "dotnet build src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool.sln -c Debug"
+
+[tasks.build-release]
+description = "Build the dotnet tool (release)"
+run = "dotnet build src/dora-explorer-dotnet-tool/dora-explorer-dotnet-tool.sln -c Release"

@@ -27,6 +27,21 @@ dora-explorer-dotnet pull-issues \
 
 All of the parameters are also available using either environmental variables, or in a default configuration file.
 
+## Building
+
+Now using mise:
+
+```sh
+# Standard debug build
+mise build
+
+# Release build
+mise build-release
+
+# Purge bins
+mise purge
+```
+
 ## Technical Features
 
 - Use Refit and direct queries rather than Jira libraries to minimise dependencies.
