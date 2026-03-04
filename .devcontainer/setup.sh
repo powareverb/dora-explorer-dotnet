@@ -19,8 +19,3 @@ if [[ -f "$MISE_FILE" ]]; then
 else
   echo "WARN: $MISE_FILE not found. Skipping mise install."
 fi
-
-# --- Optional: set zsh as default shell if available ---
-if command -v zsh >/dev/null 2>&1; then
-  sudo chsh -s "$(command -v zsh)" "$USER" || true
-fi

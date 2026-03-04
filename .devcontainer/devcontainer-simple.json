@@ -1,9 +1,6 @@
 {
-  "name": "dora-explorer DevContainer - Docker Build",
-  "build": {
-    "context": "..",
-    "dockerfile": "Dockerfile"
-  },
+  "name": "dora-explorer DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
