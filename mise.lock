@@ -1,0 +1,12 @@
+[[tools.dotnet]]
+version = "10.0.103"
+backend = "core:dotnet"
+
+[[tools.powershell-core]]
+version = "7.5.4"
+backend = "aqua:PowerShell/PowerShell"
+"platforms.linux-arm64" = { checksum = "sha256:4b32d4cb86a43dfb83d5602d0294295bf22fafbf9e0785d1aaef81938cda92f8", url = "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/powershell-7.5.4-linux-arm64.tar.gz"}
+"platforms.linux-x64" = { checksum = "sha256:1fd7983fe56ca9e6233f126925edb24bf6b6b33e356b69996d925c4db94e2fef", url = "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/powershell-7.5.4-linux-x64.tar.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:3aaadd7ca62f1e4dbe59145b6af24e926d61f8da8a4782bc535e500c184135f0", url = "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/powershell-7.5.4-osx-arm64.tar.gz"}
+"platforms.macos-x64" = { checksum = "sha256:cd16a04c1b99cdacbdc0337b0fd0da50dbf1a8b4e8437bcb4ca9118ef729211a", url = "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/powershell-7.5.4-osx-x64.tar.gz"}
+"platforms.windows-x64" = { checksum = "sha256:b40d192ae95ba6ccc4cc362ff4e1b18ca6fb5055bebbcd3920684e12701fa8f6", url = "https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/PowerShell-7.5.4-win-x64.zip"}
